@@ -31,7 +31,7 @@ char* hash(char* input){
     for (int i = 0; i < strlen(input); i++){
         from[offset++] = input[i];
         if (offset % bloco_size == 0){
-            for (int k = 0; k < 9; k++){
+            for (int k = 0; k < qtd_numeros-1; k++){
                 nums[k] = transform(nums[k], nums[k+1], from, bloco_size);
                 nums[k+1] = transform(nums[k+1], nums[k], from, bloco_size);
             }
@@ -59,12 +59,13 @@ char* hash(char* input){
 int main(){
 
     
-    FILE* f = fopen("C:\\Users\\henri\\Documentos\\projetos\\p\\projetosC\\nicehash\\_", "rb");
-    char* content;
-    size_t size = 0;
+    // FILE* f = fopen("C:\\Users\\henri\\Documentos\\projetos\\p\\projetosC\\nicehash\\_", "rb");
+    // char* content;
+    // size_t size = 0;
 
-    readFile(f, &size, &content);
+    // readFile(f, &size, &content);
 
+    char content[] = "a";
     printf("%s", hash(content));
     return 0;
 }
