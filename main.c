@@ -27,8 +27,6 @@ char* hash(char* input){
     char from[8] = {0};
     int bloco_size = sizeof(from)/ sizeof(from[0]) -1;
     
-    char padding[] = "calasewing";
-    
     int offset = 0;
     for (int i = 0; i < strlen(input); i++){
         from[offset++] = input[i];
@@ -42,10 +40,9 @@ char* hash(char* input){
     }
 
     if (offset != 0){
-        strncpy(padding, from, offset);
         for (int k = 0; k < qtd_numeros-1; k++){
-            nums[k] = transform(nums[k], nums[k+1], padding, offset);
-            nums[k+1] = transform(nums[k+1], nums[k], padding, offset);
+            nums[k] = transform(nums[k], nums[k+1], from, offset);
+            nums[k+1] = transform(nums[k+1], nums[k], from, offset);
         }
     }
 
